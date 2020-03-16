@@ -34,10 +34,29 @@ class CD:
     """
 
     def __init__(self, cd_id, cd_title, cd_artist):
-        self.cd_id = cd_id
-        self.cd_title = cd_title
-        self.cd_artist = cd_artist
-    
+        self.__cd_id = cd_id
+        self.__cd_title = cd_title
+        self.__cd_artist = cd_artist
+        
+    @property
+    def cd_id(self):
+        return self.__cd_id
+ 
+    @property
+    def cd_title(self):
+        return self.__cd_title
+ 
+    @property
+    def cd_artist(self):
+        return self.__cd_artist
+  
+    @cd_id.setter
+    def cd_id(self, cd_id):
+     try:
+      self.cd_id = int(cd_id)
+     except Exception:
+      raise Exception("Must be an int")
+   
     
 # -- PROCESSING -- #
 class DataProcessor:
@@ -145,6 +164,7 @@ class IO:
         print('ID\tCD Title (by: Artist)\n')
         for cd in table:
             print (cd.cd_id, cd.cd_title, cd.cd_artist)
+        return table
 
         print('======================================')
 
